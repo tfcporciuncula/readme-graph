@@ -6,6 +6,7 @@ digraph {
   # Projects
 
   ":app" [shape=box, fillcolor="#baffc9"];
+  ":bla" [fillcolor="#baffc9"];
   ":blip" [fillcolor="#baffc9"];
   ":blob" [fillcolor="#baffc9"];
 
@@ -14,5 +15,6 @@ digraph {
   # Dependencies
 
   ":app" -> ":blob" [style=dotted]
+  ":app" -> ":bla" [style=dotted]
   ":blob" -> ":blip" [style=dotted]
 }
