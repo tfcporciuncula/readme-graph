@@ -17,6 +17,8 @@ allprojects {
     google()
     jcenter()
   }
+
+  apply from: rootProject.file('gradle/common.gradle')
 }
 
 task clean(type: Delete) {
