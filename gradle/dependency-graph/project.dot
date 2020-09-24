@@ -1,0 +1,18 @@
+digraph {
+  graph [label="readme-graph\n ",labelloc=t,fontsize=30,ranksep=1.4];
+  node [style=filled, fillcolor="#bbbbbb"];
+  rankdir=TB;
+
+  # Projects
+
+  ":app" [shape=box, fillcolor="#baffc9"];
+  ":blip" [fillcolor="#baffc9"];
+  ":blob" [fillcolor="#baffc9"];
+
+  {rank = same; ":app";}
+
+  # Dependencies
+
+  ":app" -> ":blob" [style=dotted]
+  ":blob" -> ":blip" [style=dotted]
+}
