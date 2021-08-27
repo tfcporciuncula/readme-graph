@@ -2,10 +2,7 @@ name: Graph manually
 
 on:
   workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch'
-        required: true
+
 jobs:
   generate-dependency-graph:
     name: Generate Dependency Graph
@@ -31,4 +28,3 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-#          branch:  ${{ github.event.inputs.branch }}
