@@ -10,9 +10,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
 
       - name: Setup Graphviz
         uses: ts-graphviz/setup-graphviz@v1
@@ -24,10 +21,13 @@ jobs:
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
-          git commit -am 'Update dependency graph' -a
+          git add .
+          git commit -m "Update dependency graph"
+          git push
+          #          git diff --quiet && git diff --staged --quiet || git commit -am 'Update dependency graph'
 
-      - name: Push
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+#
+#      - name: Push
+#        uses: ad-m/github-push-action@master
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
