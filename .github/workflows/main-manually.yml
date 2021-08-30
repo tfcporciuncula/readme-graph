@@ -21,13 +21,4 @@ jobs:
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
-          git add .
-          git commit -m "Update dependency graph"
-          git push
-          #          git diff --quiet && git diff --staged --quiet || git commit -am 'Update dependency graph'
-
-#
-#      - name: Push
-#        uses: ad-m/github-push-action@master
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
+          git diff --quiet && git diff --staged --quiet || git commit -am 'Update dependency graph' && git push
