@@ -1,0 +1,26 @@
+name: Graph
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate-dependency-graph:
+    name: Generate Dependency Graph
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
+
+      - name: Generate Dependency Graph
+        run: ./gradlew projectDependencyGraph
+
+      - name: Commmit
+        run: |
+          git config --local user.email 'action@github.com'
+          git config --local user.name 'GitHub Action'
+          git add .
+          git commit -m "Update dependency graph"
+          git push
